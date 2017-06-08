@@ -217,12 +217,10 @@ textarea {
 			tutti i giorni."</h3>
 		<h5>-Pablo Picasso</h5>
 		<br>
-	
 
-		<c:forEach var="autore" items="${autori}">
-			<a href="autore?id=${autore.id}" class="btn btn-block btn-lg btn-default">${autore.nome}</a>
-			<form action="autore" method="post">
-			 	<input type="hidden" value="${autore.id}" name="id"/>
-		</c:forEach>
+
+		<tr th:each="artista : ${artisti}">
+			<td><a href="#" th:text="${artista.nome}">Title ...</a></td>
+		</tr>
 </body>
 </html>
