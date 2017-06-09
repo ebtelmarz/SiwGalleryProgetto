@@ -11,6 +11,7 @@ public class GalleryController {
 	
 @RequestMapping("/artisti")
 	public String stampaArtisti(){
-		return "artisti.html";
+		return "artisti";
 	}
+
 }
