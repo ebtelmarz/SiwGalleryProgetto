@@ -1,4 +1,4 @@
-package repositories;
+package it.uniroma3.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 

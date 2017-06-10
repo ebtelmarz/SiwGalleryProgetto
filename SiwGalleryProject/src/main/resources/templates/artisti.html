@@ -1,13 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
 <head>
-<title>OPERE</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="style.css">
-<link href="style1.css" rel="stylesheet" type="text/css">
-<link href="progetto.css" rel="stylesheet" type="text/css">
-<link href="style2.css" rel="stylesheet" type="text/css">
+<title>ARTISTI</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="stylesheet" href="style.css"/>
+<link href="style1.css" rel="stylesheet" type="text/css"/>
+<link href="progetto.css" rel="stylesheet" type="text/css"/>
+<link href="style2.css" rel="stylesheet" type="text/css"/>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
@@ -204,8 +203,8 @@ textarea {
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="index.html">HOME</a></li>
-				<li><a href="artisti.jsp">ARTISTI</a></li>
-				<li><a href="#opere">OPERE</a></li>
+				<li><a href="artisti.html">ARTISTI</a></li>
+				<li><a href="OpereAutore.html">OPERE</a></li>
 				<li><a href="login.html">AREA RISERVATA</a></li>
 
 			</ul>
@@ -213,11 +212,17 @@ textarea {
 	</div>
 	</nav>
 	<div id="band" class="container text-center">
-		<h3>"Sogno di dipingere e poi dipingo il mio sogno"</h3>
-		<h5>-Vincent Van Gogh</h5>
-		<br>
-	
-	
+		<h3>"L'arte scuote dall'anima la polvere accumulata nella vita di
+			tutti i giorni."</h3>
+		<h5>-Pablo Picasso</h5> </div>
+		<br/>
 
+      <ul th:each="artista : *{artisti}">
+         <li >
+          	Nome artista:<span th:text='${artista.nome}'>text</span>
+         </li>
+      
+      </ul>
+		
 </body>
 </html>

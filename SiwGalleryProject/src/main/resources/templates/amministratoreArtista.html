@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Inserimento Opera</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+    <body>
+        <form action="#" th:action="@{/artistaAggiunta}" th:object="${artista}" method="post">
+            <div>
+                <div>
+                    <span th:text="#{label.firstName}">Name: </span>
+                    <span><input type="text" th:field="*{nome}" /></span>
+                    <span th:if="${#fields.hasErrors('nome')}" th:text="#{label.mandatory}">Error</span>
+                </div>
+                <div>
+                    <span th:text="#{label.dateBorn}">dateBorn </span>
+                    <span><input type="text" th:field="*{dataNascita}" /></span>
+                    <span th:if="${#fields.hasErrors('dataNascita')}" th:text="#{label.mandatory}">Error</span>
+                </div>
+                <div>
+                    <span th:text="#{label.dateDeath}">dateDeath </span>
+                    <span><input type="text" th:field="*{dataMorte}" /></span>
+                    <span th:if="${#fields.hasErrors('dataMorte')}" th:text="#{label.mandatory}">Error</span>
+                </div>
+                <div>
+                    <span><button type="submit">Submit</button></span>
+                </div>
+            </div>
+        </form>
+    </body>
+</html>

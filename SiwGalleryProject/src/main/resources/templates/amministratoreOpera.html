@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Inserimento Opera</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<form action="#" th:action="@{/aggiuntaOpere}" th:object="${opera}" method="post">
+		<div>
+			<div>
+				<span th:text="#{label.title}">titolo </span> <span><input
+					type="text" th:field="*{titolo}" /></span> <span
+					th:if="${#fields.hasErrors('titolo')}" th:text="#{label.mandatory}">Error</span>
+			</div>
+			<div>
+				<span th:text="#{label.description}">descrizione </span> <span><input
+					type="text" th:field="*{descrizione}" /></span> <span
+					th:if="${#fields.hasErrors('descrizione')}"
+					th:text="#{label.mandatory}">Error</span>
+			</div>
+			<div>
+				<span th:text="#{label.technique}">tecnica</span> <span><input
+					type="text" th:field="*{tecnica}" /></span> <span
+					th:if="${#fields.hasErrors('tecnica')}"
+					th:text="#{label.mandatory}">Error</span>
+			</div>
+			<div>
+				<span th:text="#{label.anno}">anno</span> <span><input
+					type="text" th:field="*{anno}" /></span> <span
+					th:if="${#fields.hasErrors('anno')}" th:text="#{label.mandatory}">Error</span>
+			</div>
+			<div>
+				<span><button type="submit">Submit</button></span>
+			</div>
+		</div>
+	</form>
+	<form action="#" th:action="@{/recuperaArtista}" th:object="${artista}" method="get" id="id">
+				<select th:field="*{artista}">
+					<option th:each="artista : ${artisti}" th:value="${artista.id}" th:text="${artista.nome}">Artista</option>
+				</select>
+			   </form>
+</body>
+</html>
