@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import it.uniroma3.repositories.OperaRepository;
+import it.uniroma3.model.Artista;
 import it.uniroma3.model.Opera;
 
 @Service
@@ -21,6 +22,10 @@ public class OperaService {
     @Transactional
     public void add(final Opera opera) {
         this.orepository.save(opera);
+    }
+    @Transactional
+    public void delete(final Opera opera){
+    	this.orepository.delete(opera);
     }
 
 	public Opera findbyId(Long id) {

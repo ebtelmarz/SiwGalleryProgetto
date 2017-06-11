@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -28,11 +29,8 @@ public class ArtistaController {
 		return "artisti";
 	}
 
-	@GetMapping("/artistaAggiunta")
-	public String mostraForm(Artista artista){
-		return "amministratoreArtista";
-
-	}
+	
+	@RequestMapping("/artistaAggiunta")
 	@PostMapping("/artistaAggiunta")
 	public String checkArtistaInfo(@Valid @ModelAttribute Artista artista, 
 			BindingResult bindingResult, Model model) {
@@ -46,15 +44,21 @@ public class ArtistaController {
 		}
 		return "amministratoreArtista";
 	}
-
-	@PostMapping("/artistaRimozione")
-	public String  rimozioneArtista(@ModelAttribute Artista artista){
+	@RequestMapping("/rimuoviArtista")
+	@PostMapping("/rimuoviArtista")
+	public String  rimozioneArtista(@ModelAttribute Artista artista, Model model){
+	    model.addAttribute("artisti", aservice.findAll());
 		aservice.delete(artista);
-		return "amministratore";
+		return "vistaAmministratoreArtista";
+	}
+	
+	@RequestMapping("/paginaArtista/{id}")
+	public String paginaArtista(@PathVariable Long id, Model model){
+		model.addAttribute("artista", aservice.findbyId(id));
+		return "resocontoArtista";
 	}
 
-
-
+     
 
 
 }

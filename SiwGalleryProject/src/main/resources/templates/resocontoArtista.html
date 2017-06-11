@@ -1,10 +1,29 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<title>Inserimento Opera</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
 <body>
+	<div>
+		<p th:text="'First name: ' + ${artista.nome}" />
+	</div>
+	<div>
+		<p th:text="'Data di nascita: ' + ${artista.dataNascita}" />
+	</div>
+	<div>
+		<p th:text="'Data morte: ' + ${artista.dataMorte}" />
+	</div>
+
+	<h1>Nel sistema ci sono queste opere associate a questo artista:</h1>
+	<form action="#" th:action="@{/eliminaOpera}" th:object="${opera}" method="post">
+		<ul th:each="opera : *{opere}">
+
+			<li><a th:href="paginaOpera/{${opera.id}}"> Nome
+					<span th:text='${opera.nome}'>text</span>
+			</a>
+			<span><button type="submit">cancella</button></span>
+			</li>
+
+		</ul>
+		
+	</form>
 	<form action="#" th:action="@{/aggiuntaOpere}" th:object="${opera}" method="post" >
 		<div>
 			<div>
@@ -29,16 +48,8 @@
 					type="text" th:field="*{anno}" /></span> <span
 					th:if="${#fields.hasErrors('anno')}" th:text="#{label.mandatory}">Error</span>
 			</div>
-			<div>
-			<select th:field="*{artista}" >
-					<option th:each="artista : ${artisti}" th:value="${artista.id}" th:text="${artista.nome}" th:name="id">Artista</option>
-				</select>
-			
-			</div>
-			<div>
-				<span><button type="submit">Submit</button></span>
-			</div>
 		</div>
 	</form>
+
 </body>
 </html>
