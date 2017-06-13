@@ -39,7 +39,7 @@ public class OperaService {
 	public ArrayList<Opera> findByArtistaId(Long id) {
 		ArrayList<Opera> opereArtista=new ArrayList<Opera>();
 		for (Opera opera: this.orepository.findAll()){
-			if(opera.getArtista().getId()==id)
+			if(opera.getArtista().getId().equals(id))
 				opereArtista.add(opera);
 	
 				

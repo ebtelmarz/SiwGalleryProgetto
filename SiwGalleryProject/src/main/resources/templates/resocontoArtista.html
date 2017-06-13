@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
 	<div>
-		<p th:text="'First name: ' + ${artista.nome}" />
+		<p th:text="'Nome: ' + ${artista.nome}" />
 	</div>
 	<div>
 		<p th:text="'Data di nascita: ' + ${artista.dataNascita}" />
@@ -27,33 +27,6 @@
 
 		</ul>
 	<a th:href="@{/nuovaOpera/} + ${artista.id}">Aggiungi nuova Opera</a>
-	<!-- 
-	<form action="#" th:action="@{/aggiuntaOpere}" th:object="${opera}" method="post" >
-		<div>
-			<div>
-				<span th:text="#{label.title}">titolo </span> <span><input
-					type="text" th:field="*{titolo}" /></span> <span
-					th:if="${#fields.hasErrors('titolo')}" th:text="#{label.mandatory}">Error</span>
-			</div>
-			<div>
-				<span th:text="#{label.description}">descrizione </span> <span><input
-					type="text" th:field="*{descrizione}" /></span> <span
-					th:if="${#fields.hasErrors('descrizione')}"
-					th:text="#{label.mandatory}">Error</span>
-			</div>
-			<div>
-				<span th:text="#{label.technique}">tecnica</span> <span><input
-					type="text" th:field="*{tecnica}" /></span> <span
-					th:if="${#fields.hasErrors('tecnica')}"
-					th:text="#{label.mandatory}">Error</span>
-			</div>
-			<div>
-				<span th:text="#{label.anno}">anno</span> <span><input
-					type="text" th:field="*{anno}" /></span> <span
-					th:if="${#fields.hasErrors('anno')}" th:text="#{label.mandatory}">Error</span>
-			</div>
-		</div>
-	</form> -->
 
 </body>
 </html>
