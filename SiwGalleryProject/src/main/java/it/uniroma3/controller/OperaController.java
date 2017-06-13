@@ -7,10 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.model.Artista;
 import it.uniroma3.model.Opera;
@@ -24,19 +26,36 @@ public class OperaController {
 	private ArtistaService aservice;
 	@Autowired
 	private OperaService oservice;
-
+  
   @PostMapping("/aggiuntaOpere")
-  public String aggiungiOpera(@Valid@ModelAttribute Opera opera,@PathVariable Long id, Model model){
-	  Artista artista=aservice.findbyId(id);
-	  opera.setArtista(artista);
-	  oservice.add(opera);
+  public String aggiungiOpera(@Valid@ModelAttribute Opera opera,BindingResult bindingResult,@ModelAttribute Artista artista, Model model){
+	//  Artista artista= aservice.findbyId(Long.parseLong(id));
+	  if(bindingResult.hasErrors()){
+		  return "amministratoreOpera";
+	  }
+	  else{
+	    opera.setArtista(artista);
+	    artista.getOpere().add(opera);
+	    oservice.add(opera);
+	    aservice.add(artista);
 	  model.addAttribute("opera",opera);
-	return "resocontoArtista";
+	  model.addAttribute("artista",artista);
+	  }
+	return "amministratoreOpera";
 	  
   }
+  @RequestMapping("/nuovaOpera/{id}")
+  public String paginaFormOpera(@PathVariable String id, Model model,Opera opera){
+	   Artista artista = aservice.findbyId(Long.parseLong(id));
+	   model.addAttribute("artista",artista);
+	  return "amministratoreOpera";
+  }
+  
   @PostMapping("/eliminaOpera")
-  public String eliminaOpera(@ModelAttribute Opera opera){
-	  oservice.delete(opera);
+  public String eliminaOpera(@RequestParam String id, Model model, @RequestParam String artistaId){
+	  oservice.delete(oservice.findbyId(Long.parseLong(id)));
+	  model.addAttribute("opere", oservice.findByArtistaId(Long.parseLong(artistaId)));
+	  model.addAttribute("artista", aservice.findbyId(Long.parseLong(id)));
 	  return "resocontoArtista";
   }
   @RequestMapping("/paginaOpera/{id}")

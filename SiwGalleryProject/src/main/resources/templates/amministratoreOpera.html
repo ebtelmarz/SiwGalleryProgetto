@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<form action="#" th:action="@{/aggiuntaOpere}" th:object="${opera}" method="post" >
+	<form action="#" th:action="@{/aggiuntaOpere}" th:object="${opera}" method="post">
 		<div>
 			<div>
 				<span th:text="#{label.title}">titolo </span> <span><input
@@ -30,11 +30,11 @@
 					th:if="${#fields.hasErrors('anno')}" th:text="#{label.mandatory}">Error</span>
 			</div>
 			<div>
-			<select th:field="*{artista}" >
-					<option th:each="artista : ${artisti}" th:value="${artista.id}" th:text="${artista.nome}" th:name="id">Artista</option>
-				</select>
-			
+				<span th:text="#{label.dimension}">dimensione</span> <span><input
+					type="text" th:field="*{dimensione}" /></span> <span
+					th:if="${#fields.hasErrors('dimensione')}" th:text="#{label.mandatory}">Error</span>
 			</div>
+			     <input type="hidden" name="id" th:value="${artista.id}" />
 			<div>
 				<span><button type="submit">Submit</button></span>
 			</div>

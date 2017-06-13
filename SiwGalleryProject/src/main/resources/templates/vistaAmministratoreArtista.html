@@ -7,20 +7,17 @@
 </head>
 <body>
 	<h1>Gli artisti presenti nel sistema sono :</h1>
-	<form action="#" th:action="@{/rimuoviArtista}" th:object="${artista}"
-		method="post">
-		<ul th:each="artista : *{artisti}">
 
-			<li><a th:href="paginaArtista/{${artista.id}}"> Nome
-					Artista:<span th:text='${artista.nome}'>text</span>
-             
-							
-			</a>
-			<span><button type="submit">cancella</button></span>
-			</li>
 
-		</ul>
-	</form>
+	<ul th:each="artista : *{artisti}">
+		<li><a th:href="@{/paginaArtista/} + ${artista.id}" ><span th:text="${artista.nome}">..</span> </a>
+			<form action="#" th:action="@{/rimuoviArtista}" method="post">
+				<input type="hidden" name="id" th:value="${artista.id}"/>
+				<input type="submit" value ="cancella"/>
+			</form></li>
+
+	</ul>
+
 
 
 </body>

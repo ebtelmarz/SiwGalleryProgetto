@@ -78,16 +78,15 @@ public class Opera {
 	private String dimensione;
 	private String tecnica;
 	private String anno;
-	@ManyToOne
+	@ManyToOne(cascade={CascadeType.MERGE})
 	private Artista artista;
 	public Opera(){}
-	public Opera(String titolo, String descr , String dimensione, String tecnica ,String anno, Artista artista){
+	public Opera(String titolo, String descrizione , String dimensione, String tecnica ,String anno){
 		this.anno=anno;
 		this.titolo=titolo;
-		this.descrizione=descr;
+		this.descrizione=descrizione;
 		this.dimensione=dimensione;
 		this.tecnica=tecnica;
-		this.artista=artista;
 	}
 	public String getTitolo() {
 		return titolo;
@@ -130,7 +129,7 @@ public class Opera {
 	}
 
 	public Artista getArtista() {
-		return artista;
+		return this.artista;
 	}
 
 	public void setArtista(Artista artista) {

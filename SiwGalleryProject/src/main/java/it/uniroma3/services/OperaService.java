@@ -1,5 +1,9 @@
 package it.uniroma3.services;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
@@ -30,6 +34,19 @@ public class OperaService {
 
 	public Opera findbyId(Long id) {
 		return this.orepository.findOne(id);
+	}
+
+	public ArrayList<Opera> findByArtistaId(Long id) {
+		ArrayList<Opera> opereArtista=new ArrayList<Opera>();
+		for (Opera opera: this.orepository.findAll()){
+			if(opera.getArtista().getId()==id)
+				opereArtista.add(opera);
+	
+				
+		}
+		
+		   
+		return opereArtista;
 	}
 	
 

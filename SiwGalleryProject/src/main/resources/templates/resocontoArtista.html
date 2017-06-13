@@ -12,18 +12,22 @@
 	</div>
 
 	<h1>Nel sistema ci sono queste opere associate a questo artista:</h1>
-	<form action="#" th:action="@{/eliminaOpera}" th:object="${opera}" method="post">
 		<ul th:each="opera : *{opere}">
 
-			<li><a th:href="paginaOpera/{${opera.id}}"> Nome
-					<span th:text='${opera.nome}'>text</span>
+			<li><a th:href="@{/paginaOpera/} + ${opera.id}"> 
+					<span th:text="${opera.titolo}">text</span>
 			</a>
+			 <form action="#" th:action="@{/eliminaOpera}"  method="post">
+			 <input type="hidden" name="id" th:value="${opera.id}"/>
+			 <input type="hidden" name="artistaId" th:value="${artista.id}"/>
+			 
 			<span><button type="submit">cancella</button></span>
+			</form>
 			</li>
 
 		</ul>
-		
-	</form>
+	<a th:href="@{/nuovaOpera/} + ${artista.id}">Aggiungi nuova Opera</a>
+	<!-- 
 	<form action="#" th:action="@{/aggiuntaOpere}" th:object="${opera}" method="post" >
 		<div>
 			<div>
@@ -49,7 +53,7 @@
 					th:if="${#fields.hasErrors('anno')}" th:text="#{label.mandatory}">Error</span>
 			</div>
 		</div>
-	</form>
+	</form> -->
 
 </body>
 </html>

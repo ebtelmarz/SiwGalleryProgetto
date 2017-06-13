@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
+
 @Entity
 public class Artista {
 	
@@ -66,9 +67,11 @@ public class Artista {
    @GeneratedValue(strategy=GenerationType.AUTO)
    private Long id;
    private String nome;
+   @Temporal(TemporalType.DATE)
    private Date dataNascita;
+   @Temporal(TemporalType.DATE)
    private Date dataMorte;
-   @OneToMany(mappedBy="artista")
+   @OneToMany(mappedBy="artista", cascade={CascadeType.REMOVE , CascadeType.PERSIST})
    private List<Opera> opere;
    
    public Artista(){}
