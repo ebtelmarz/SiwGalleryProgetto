@@ -28,8 +28,8 @@ public class OperaController {
 	private OperaService oservice;
   
   @PostMapping("/aggiuntaOpere")
-  public String aggiungiOpera(@Valid@ModelAttribute Opera opera,BindingResult bindingResult,@ModelAttribute Artista artista, Model model){
-	//  Artista artista= aservice.findbyId(Long.parseLong(id));
+  public String aggiungiOpera(@Valid@ModelAttribute Opera opera,BindingResult bindingResult,@RequestParam String id, Model model){
+	  Artista artista= aservice.findbyId(Long.parseLong(id));
 	  if(bindingResult.hasErrors()){
 		  return "amministratoreOpera";
 	  }
@@ -53,9 +53,9 @@ public class OperaController {
   
   @PostMapping("/eliminaOpera")
   public String eliminaOpera(@RequestParam String id, Model model, @RequestParam String artistaId){
+	  model.addAttribute("artista", aservice.findbyId(Long.parseLong(artistaId)));
 	  oservice.delete(oservice.findbyId(Long.parseLong(id)));
 	  model.addAttribute("opere", oservice.findByArtistaId(Long.parseLong(artistaId)));
-	  model.addAttribute("artista", aservice.findbyId(Long.parseLong(id)));
 	  return "resocontoArtista";
   }
   @RequestMapping("/paginaOpera/{id}")
