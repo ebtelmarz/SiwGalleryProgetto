@@ -10,6 +10,7 @@
   body {
       font: 400 15px/1.8 Lato, sans-serif;
       color: #777;
+      background-color: #2d2d30;
   }
   h3, h4 {
       margin: 10px 0 30px 0;
@@ -71,6 +72,7 @@
       color: #f1f1f1;
       border-radius: 0;
       transition: .2s;
+      border: 1px solid #ffffff;
   }
   .btn:hover, .btn:focus {
       border: 1px solid #333;
@@ -98,17 +100,19 @@
   .navbar {
       font-family: Montserrat, sans-serif;
       margin-bottom: 0;
-      background-color: #2d2d30;
+     /*  background-color: #2d2d30; */
       border: 0;
       font-size: 11px !important;
       letter-spacing: 4px;
       opacity: 0.9;
   }
   .navbar li a, .navbar .navbar-brand { 
-      color: #d5d5d5 !important;
+      /* color: #d5d5d5 !important; */
+       color: #000000 !important;
   }
   .navbar-nav li a:hover {
-      color: #fff !important;
+     /*  color: #fff !important; */
+     color: #d5d5d5 !important;
   }
   .navbar-nav li.active a {
       color: #fff !important;
@@ -144,7 +148,12 @@
   }
   textarea {
       resize: none;
-  }
+ /*  }
+  .button {
+    float: left;
+    border: 1px solid green;
+} */
+  
   </style>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -162,7 +171,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="index.html">HOME</a></li>
-        <li><a href="artisti.html">ARTISTI</a></li>
+        <li><a th:href=@{"/artisti"}>ARTISTI</a></li>
         <li><a href="#opere">OPERE</a></li>
         <li><a href="amministratore.html">AREA RISERVATA</a></li>
       <!--   <li class="dropdown">
@@ -180,6 +189,7 @@
   </div>
 </nav>
 <body>
+<div class="container">
 	<div>
 		<p th:text="'First name: ' + ${artista.nome}" />
 	</div>
@@ -191,21 +201,23 @@
 	</div>
 
 	<h1>Nel sistema ci sono queste opere associate a questo artista:</h1>
-		<ul th:each="opera : *{opere}">
+		<ul style="list-style-type:none" th:each="opera : *{opere}">
 
-			<li><a th:href="@{/paginaOpera/} + ${opera.id}"> 
+			<li><a class="btn btn-lg btn-primary btn-block" th:href="@{/paginaOpera/} + ${opera.id}"> 
 					<span th:text="${opera.titolo}">text</span>
 			</a>
 			 <form action="#" th:action="@{/eliminaOpera}"  method="post">
 			 <input type="hidden" name="id" th:value="${opera.id}"/>
 			 <input type="hidden" name="artistaId" th:value="${artista.id}"/>
 			 
-			<span><button type="submit">cancella</button></span>
+			<span><button class="btn btn-lg btn-primary btn-block" type="submit">cancella</button></span>
 			</form>
 			</li>
 
 		</ul>
-	<a th:href="@{/nuovaOpera/} + ${artista.id}">Aggiungi nuova Opera</a>
+		</div>
+		<div class="container">
+	<a class="btn btn-lg btn-primary btn-block" th:href="@{/nuovaOpera/} + ${artista.id}">Aggiungi nuova Opera</a>
 	<!-- 
 	<form action="#" th:action="@{/aggiuntaOpere}" th:object="${opera}" method="post" >
 		<div>
@@ -233,6 +245,6 @@
 			</div>
 		</div>
 	</form> -->
-
+</div>
 </body>
 </html>
