@@ -36,17 +36,18 @@ public class ArtistaController {
 		return "artisti";
 	}
 	
+	@RequestMapping("/artista/{id}")
+	public String paginaArtista(@PathVariable String id, Model model){
+		model.addAttribute("artista", aservice.findbyId(Long.parseLong(id)));
+		
+		return "infoArtista";
+	}
 	
 	@RequestMapping("/artistaAggiunta")
 	public String formArtista(Artista artista){
 		return "amministratoreArtista";
 	}
 
-	
-	
-	
-	
-	
 	
 	@PostMapping("/addArtista")
 	public String checkArtistaInfo(@Valid @ModelAttribute Artista artista, 
@@ -78,7 +79,7 @@ public class ArtistaController {
 	}
 
 	@RequestMapping("/paginaArtista/{id}")
-	public String paginaArtista(@PathVariable String id, Model model){
+	public String paginaArtistaAmm(@PathVariable String id, Model model){
 		model.addAttribute("artista", aservice.findbyId(Long.parseLong(id)));
 		model.addAttribute("opere",oservice.findByArtistaId(Long.parseLong(id)));
 		return "resocontoArtista";

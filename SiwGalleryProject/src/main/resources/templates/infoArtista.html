@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+ <div>
+		<p th:text="'First name: ' + ${artista.nome}" />
+	</div>
+	<div>
+		<p th:text="'Data di nascita: ' + ${artista.dataNascita}" />
+	</div>
+	<div>
+		<p th:text="'Data morte: ' + ${artista.dataMorte}" />
+	</div>
+</body>
+</html>
