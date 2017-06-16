@@ -1,3 +1,4 @@
+
 package it.uniroma3.security;
 
 
@@ -29,6 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
+<<<<<<< HEAD
 	    http.csrf().disable()
         .formLogin()
         .loginPage("/login")
@@ -38,6 +40,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .authorizeRequests()
         .antMatchers("/","/index","/artisti","/artista/**","/paginaOpera/**").permitAll()
         .antMatchers("/artistaAggiunta","/amministraArtista","/amministratore.html").hasRole("ADMIN")
+=======
+      http.csrf().disable()
+        .formLogin()
+        .loginPage("/login")
+        .permitAll()
+        .defaultSuccessUrl("/amministratore",true)
+        .and()
+        .authorizeRequests()
+        .antMatchers("/","/index","/artisti","/artista/**","/paginaOpera/**").permitAll()
+        .antMatchers("/artistaAggiunta","/amministraArtista","/paginaArtista/**","/nuovaOpera/**","/amministratore.html").hasRole("ADMIN")
+>>>>>>> branch 'master' of https://github.com/victormax94/SiwGalleryProgetto.git
         .anyRequest().permitAll()
         .and()
         .logout()

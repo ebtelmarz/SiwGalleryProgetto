@@ -80,6 +80,8 @@ public class Opera {
 	private String anno;
 	@ManyToOne(cascade={CascadeType.MERGE})
 	private Artista artista;
+	
+	
 	public Opera(){}
 	public Opera(String titolo, String descrizione , String dimensione, String tecnica ,String anno){
 		this.anno=anno;

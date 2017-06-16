@@ -9,13 +9,13 @@ import javax.persistence.*;
 
 @Entity
 public class Artista {
-	
-   @Override
+
+	@Override
 	public String toString() {
 		return "Artista [id=" + id + ", nome=" + nome + ", dataNascita=" + dataNascita + ", dataMorte=" + dataMorte
 				+ ", opere=" + opere + "]";
 	}
-@Override
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -63,54 +63,54 @@ public class Artista {
 		return true;
 	}
 
-@Id
-   @GeneratedValue(strategy=GenerationType.AUTO)
-   private Long id;
-   private String nome;
-   @Temporal(TemporalType.DATE)
-   private Date dataNascita;
-   @Temporal(TemporalType.DATE)
-   private Date dataMorte;
-   @OneToMany(mappedBy="artista", cascade={CascadeType.REMOVE , CascadeType.PERSIST})
-   private List<Opera> opere;
-   
-   public Artista(){}
-   public Artista(String nome, Date d1, Date d2 ){
-	   this.nome=nome;
-	   this.dataNascita=d1;
-	   this.dataMorte=d2;
-   }
-   
-public List<Opera> getOpere() {
-	return opere;
-}
-public void setOpere(List<Opera> opere) {
-	this.opere = opere;
-}
-public void setDataNascita(Date dataNascita) {
-	this.dataNascita = dataNascita;
-}
-public void setDataMorte(Date dataMorte) {
-	this.dataMorte = dataMorte;
-}
-public Long getId() {
-	return id;
-}
-public void setId(Long id) {
-	this.id = id;
-}
-public String getNome() {
-	return nome;
-}
-public void setNome(String nome) {
-	this.nome = nome;
-}
-public Date getDataNascita() {
-	return dataNascita;
-}
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id;
+	private String nome;
+	@Temporal(TemporalType.DATE)
+	private Date dataNascita;
+	@Temporal(TemporalType.DATE)
+	private Date dataMorte;
+	@OneToMany(mappedBy="artista", cascade={CascadeType.REMOVE , CascadeType.PERSIST})
+	private List<Opera> opere;
 
-public Date getDataMorte() {
-	return dataMorte;
-}
+	public Artista(){}
+	public Artista(String nome, Date d1, Date d2 ){
+		this.nome=nome;
+		this.dataNascita=d1;
+		this.dataMorte=d2;
+	}
+
+	public List<Opera> getOpere() {
+		return opere;
+	}
+	public void setOpere(List<Opera> opere) {
+		this.opere = opere;
+	}
+	public void setDataNascita(Date dataNascita) {
+		this.dataNascita = dataNascita;
+	}
+	public void setDataMorte(Date dataMorte) {
+		this.dataMorte = dataMorte;
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public Date getDataNascita() {
+		return dataNascita;
+	}
+
+	public Date getDataMorte() {
+		return dataMorte;
+	}
 
 }
