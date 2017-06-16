@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.uniroma3.model.Artista;
 import it.uniroma3.model.Opera;
@@ -25,7 +26,7 @@ import it.uniroma3.services.ArtistaService;
 public class MainController {
 
 	// Login form
-	@RequestMapping("/loginAmministratore")
+	@RequestMapping("/login")
 	public String login() {
 		return "loginAmministratore";
 	}
@@ -38,10 +39,10 @@ public class MainController {
 		return "loginAmministratore";
 	}
 	
-/*	@RequestMapping("/paginaAmministratore")
+	@RequestMapping("/amministratore")
 	public String paginaAmm(){
 		return "amministratore";
-	}*/
+	}
 
   /* //index
 	@RequestMapping("/index")

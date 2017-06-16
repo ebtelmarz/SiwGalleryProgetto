@@ -171,7 +171,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="index.html">HOME</a></li>
-        <li><a th:href=@{"/artisti"}>ARTISTI</a></li>
+        <li><a th:href="@{/artisti/}">ARTISTI</a></li>
         <li><a href="#opere">OPERE</a></li>
         <li><a href="amministratore.html">AREA RISERVATA</a></li>
       <!--   <li class="dropdown">
@@ -203,7 +203,7 @@
 	<h1>Nel sistema ci sono queste opere associate a questo artista:</h1>
 		<ul style="list-style-type:none" th:each="opera : *{opere}">
 
-			<li><a class="btn btn-lg btn-primary btn-block" th:href="@{/paginaOpera/} + ${opera.id}"> 
+			<li><a class="btn btn-lg btn-primary btn-block" th:href="@{/paginaOpera/} + ${opera.id} + "> 
 					<span th:text="${opera.titolo}">text</span>
 			</a>
 			 <form action="#" th:action="@{/eliminaOpera}"  method="post">
@@ -218,33 +218,6 @@
 		</div>
 		<div class="container">
 	<a class="btn btn-lg btn-primary btn-block" th:href="@{/nuovaOpera/} + ${artista.id}">Aggiungi nuova Opera</a>
-	<!-- 
-	<form action="#" th:action="@{/aggiuntaOpere}" th:object="${opera}" method="post" >
-		<div>
-			<div>
-				<span th:text="#{label.title}">titolo </span> <span><input
-					type="text" th:field="*{titolo}" /></span> <span
-					th:if="${#fields.hasErrors('titolo')}" th:text="#{label.mandatory}">Error</span>
-			</div>
-			<div>
-				<span th:text="#{label.description}">descrizione </span> <span><input
-					type="text" th:field="*{descrizione}" /></span> <span
-					th:if="${#fields.hasErrors('descrizione')}"
-					th:text="#{label.mandatory}">Error</span>
-			</div>
-			<div>
-				<span th:text="#{label.technique}">tecnica</span> <span><input
-					type="text" th:field="*{tecnica}" /></span> <span
-					th:if="${#fields.hasErrors('tecnica')}"
-					th:text="#{label.mandatory}">Error</span>
-			</div>
-			<div>
-				<span th:text="#{label.anno}">anno</span> <span><input
-					type="text" th:field="*{anno}" /></span> <span
-					th:if="${#fields.hasErrors('anno')}" th:text="#{label.mandatory}">Error</span>
-			</div>
-		</div>
-	</form> -->
 </div>
 </body>
 </html>
