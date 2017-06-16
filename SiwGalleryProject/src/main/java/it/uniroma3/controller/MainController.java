@@ -25,7 +25,7 @@ import it.uniroma3.services.ArtistaService;
 public class MainController {
 
 	// Login form
-	@RequestMapping("/loginAmministratore")
+	@RequestMapping("/login")
 	public String login() {
 		return "loginAmministratore";
 	}
@@ -38,10 +38,10 @@ public class MainController {
 		return "loginAmministratore";
 	}
 	
-/*	@RequestMapping("/paginaAmministratore")
+	@RequestMapping("/amministratore")
 	public String paginaAmm(){
 		return "amministratore";
-	}*/
+	}
 
   /* //index
 	@RequestMapping("/index")

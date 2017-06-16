@@ -1,3 +1,4 @@
+
 package it.uniroma3.security;
 
 
@@ -17,6 +18,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   @Autowired
   private DataSource dataSource;
 
+
   @Override
   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
@@ -28,12 +30,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
-    http.authorizeRequests().antMatchers("/**").permitAll()
-       .antMatchers("/amministraArtista","/paginaArtista/**","/artistaAggiunta","/nuovaOpera/**").hasRole("ADMIN")
-        .anyRequest().authenticated();
-    http.formLogin().defaultSuccessUrl("/amministratore.html", true).and().
-    formLogin().loginPage("/loginAmministratore").permitAll().and().logout()
-    .permitAll();
+      http.csrf().disable()
+        .formLogin()
+        .loginPage("/login")
+        .permitAll()
+        .defaultSuccessUrl("/amministratore",true)
+        .and()
+        .authorizeRequests()
+        .antMatchers("/","/index","/artisti","/artista/**","/paginaOpera/**").permitAll()
+        .antMatchers("/artistaAggiunta","/amministraArtista","/paginaArtista/**","/nuovaOpera/**","/amministratore.html").hasRole("ADMIN")
+        .anyRequest().permitAll()
+        .and()
+        .logout()
+        .permitAll();
     http.exceptionHandling().accessDeniedPage("/403");
   }
 

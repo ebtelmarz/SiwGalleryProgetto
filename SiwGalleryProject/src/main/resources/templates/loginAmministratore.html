@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:tiles="http://www.thymeleaf.org">
 
 <head>
 <meta charset="utf-8">
@@ -13,11 +14,16 @@
 <!-- <link href="/static/stile1.css" rel="stylesheet">
 <link href="static/stile2.css" rel="stylesheet">
 <link href="static/stile3.css" rel="stylesheet"> -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Lato"
+	rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat"
+	rel="stylesheet" type="text/css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script
 	src="view-source:http://getbootstrap.com/assets/js/ie-emulation-modes-warning.js"></script>
 
@@ -35,14 +41,19 @@
 <style>
 body {
 	font: 400 15px/1.8 Lato, sans-serif;
-	color: #777;
+	color: #ffffff;
+	background-color: #2d2d30;
 }
 
 h3, h4 {
 	margin: 10px 0 30px 0;
 	letter-spacing: 10px;
 	font-size: 20px;
-	color: #111;
+	color: #000000;
+}
+
+legend {
+	color: #ffffff
 }
 
 .container {
@@ -116,6 +127,8 @@ h3, h4 {
 	color: #f1f1f1;
 	border-radius: 0;
 	transition: .2s;
+	border: 1px solid #ffffff;
+	margin-top: 30px;
 }
 
 .btn:hover, .btn:focus {
@@ -149,7 +162,7 @@ h3, h4 {
 .navbar {
 	font-family: Montserrat, sans-serif;
 	margin-bottom: 0;
-	background-color: #2d2d30;
+	background-color: #ffffff;
 	border: 0;
 	font-size: 11px !important;
 	letter-spacing: 4px;
@@ -157,11 +170,13 @@ h3, h4 {
 }
 
 .navbar li a, .navbar .navbar-brand {
-	color: #d5d5d5 !important;
+	/* color: #d5d5d5 !important; */
+	color: #000000 !important;
 }
 
 .navbar-nav li a:hover {
-	color: #fff !important;
+	/*  color: #fff !important; */
+	color: #d5d5d5 !important;
 }
 
 .navbar-nav li.active a {
@@ -208,52 +223,63 @@ footer a:hover {
 textarea {
 	resize: none;
 }
+/*  }
+  .button {
+    float: left;
+    border: 1px solid green;
+} */
 </style>
 </head>
 
 <body>
-<nav class="navbar navbar-default navbar-fixed-top">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse"
-				data-target="#myNavbar">
-				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="#myPage">GALLERIA D'ARTE</a>
-		</div>
-		<div class="collapse navbar-collapse" id="myNavbar">
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="index.html">HOME</a></li>
-				<li><a href="artisti.jsp">ARTISTI</a></li>
-				<li><a href="#opere">OPERE</a></li>
-				<li><a href="login.html">AREA RISERVATA</a></li>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#myNavbar">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand">GALLERIA D'ARTE</a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="index.html">HOME</a></li>
+					<li><a href="/artisti">ARTISTI</a></li>
+					<li><a href="/opere">OPERE</a></li>
+					<li><a href="/loginAmministratore">AREA RISERVATA</a></li>
 
-			</ul>
+				</ul>
+			</div>
 		</div>
-	</div>
 	</nav>
-	 <div class="container">
-        <form action="#" th:action="@{/login}" method="post" class="form-signin">
-           <h2 class="form-signin-heading">Accesso</h2>               
-            <fieldset>
-                <legend>Please Login</legend>
-                <div th:if="${param.error}" class="alert alert-error">    
-                    Invalid username and password.
-                </div>
-                <div th:if="${param.logout}" class="alert alert-success"> 
-                    You have been logged out.
-                </div>
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username"/>        
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password"/>    
-                <div class="form-actions">
-                    <button type="submit" class="btn">Log in</button>
-                </div>
-            </fieldset>
-        </form>
-    </div>
+	<div class="container">
+		<form action="#" th:action="@{/login}" method="post"
+			class="form-signin">
+			<h2 class="form-signin-heading">Accesso</h2>
+			<fieldset>
+				<legend>Please Login</legend>
+				<div th:if="${param.error}" class="alert alert-error">Invalid
+					username and password.</div>
+				<div th:if="${param.logout}" class="alert alert-success">You
+					have been logged out.</div>
+				<div>
+					<label for="username">Username</label> <input type="text"
+						id="username" name="username" class="form-control"
+						placeholder="Username" />
+				</div>
+				<div>
+					<label for="password">Password</label> <input type="password"
+						id="password" name="password" class="form-control"
+						placeholder="Password" />
+				</div>
+				<div class="form-actions">
+					<button class="btn btn-lg btn-primary btn-block" type="submit">Log
+						in</button>
+				</div>
+			</fieldset>
+		</form>
+	</div>
 	<!-- <div class="container">
 		<form:form class="form-signin" method="post" action="login" modelAttribute="loginBean">
 			<h2 class="form-signin-heading">Accesso</h2>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>IMMAGINI</title>
+</head>
+<body>
+	<div>
+		<ul>
+			<li th:each="file : ${files}">
+				<a th:href="${file}" th:text="${file}">text</a>
+			</li>
+		</ul>
+	</div>
+
+</body>
+</html>

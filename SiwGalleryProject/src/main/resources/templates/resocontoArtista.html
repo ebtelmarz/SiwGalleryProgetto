@@ -171,9 +171,9 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="index.html">HOME</a></li>
-        <li><a th:href=@{"/artisti"}>ARTISTI</a></li>
-        <li><a href="#opere">OPERE</a></li>
-        <li><a href="amministratore.html">AREA RISERVATA</a></li>
+        <li><a href="/artisti">ARTISTI</a></li>
+        <li><a href="/opere">OPERE</a></li>
+        <li><a href="/loginAmministratore">AREA RISERVATA</a></li>
       <!--   <li class="dropdown">
          <a class="dropdown-toggle" data-toggle="dropdown" href="#">MORE
           <span class="caret"></span></a>
@@ -189,15 +189,14 @@
   </div>
 </nav>
 <body>
-<div class="container">
-	<div>
-		<p th:text="'First name: ' + ${artista.nome}" />
+ <div class="container">
+		<h3 th:text="'First name: ' + ${artista.nome}" >text</h3>
 	</div>
 	<div>
-		<p th:text="'Data di nascita: ' + ${artista.dataNascita}" />
+		<h3 th:text="'Data di nascita: ' + ${artista.dataNascita}" >text</h3>
 	</div>
 	<div>
-		<p th:text="'Data morte: ' + ${artista.dataMorte}" />
+		<h3 th:text="'Data morte: ' + ${artista.dataMorte}" >text</h3>
 	</div>
 
 	<h1>Nel sistema ci sono queste opere associate a questo artista:</h1>

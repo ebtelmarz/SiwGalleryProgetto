@@ -1,7 +1,7 @@
-<!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="utf-8">
+<title>AGGIUNTA IMMAGINI</title>
+<meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -9,6 +9,10 @@
 	rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Montserrat"
 	rel="stylesheet" type="text/css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
@@ -24,7 +28,7 @@ h3, h4 {
 	margin: 10px 0 30px 0;
 	letter-spacing: 10px;
 	font-size: 20px;
-	color: #111;
+	color: #ffffff;
 }
 
 .container {
@@ -99,7 +103,6 @@ h3, h4 {
 	border-radius: 0;
 	transition: .2s;
 	border: 1px solid #ffffff;
-	margin-top: 30px;
 }
 
 .btn:hover, .btn:focus {
@@ -200,11 +203,9 @@ textarea {
     border: 1px solid green;
 } */
 </style>
-<title>Inserimento Artista</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -214,45 +215,42 @@ textarea {
 				</button>
 				<a class="navbar-brand">GALLERIA D'ARTE</a>
 			</div>
-			<div class="collapse navbar-collapse" id="myNavbar">
+			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a th:href="index.html">HOME</a></li>
+					<li><a href="index.html">HOME</a></li>
 					<li><a href="/artisti">ARTISTI</a></li>
 					<li><a href="/opere">OPERE</a></li>
-					<li><a href="/loginAmministratore">AREA RISERVATA</a></li>
+					<li><a th:href="@{/loginAmministratore}">AREA RISERVATA</a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
-	<div class="container">
-		<form action="#" th:action="@{/addArtista}" th:object="${artista}"
-			method="post">
-			<div>
+<div class ="container">
+	<div  th:if="${message}">
+		<h2 th:text="${message}"/>
+	</div>
+
+	<div>
+		<form method="POST" enctype="multipart/form-data" th:action="@{/aggiungiFile}">
+			
+				<h3>File to upload:</h3>
 				<div>
-					<span th:text="#{label.firstName}"><b>Name: </b></span> <span><input
-						type="text" class="form-control" th:field="*{nome}" /></span> <span
-						th:if="${#fields.hasErrors('nome')}" th:text="#{label.mandatory}">Error</span>
+				<input class="btn btn-lg btn-primary btn-block" type="file" name="file"/><br>
 				</div>
 				<div>
-					<span th:text="#{label.dateBorn}"><b>dateBorn</b> </span> <span><input
-						type="text" class="form-control" th:field="*{dataNascita}" /></span> <span
-						th:if="${#fields.hasErrors('dataNascita')}"
-						th:text="#{label.mandatory}">Error</span>
-				</div>
-				<div>
-					<span th:text="#{label.dateDeath}"><b>dateDeath </b></span> <span><input
-						type="text" class="form-control" th:field="*{dataMorte}" /></span> <span
-						th:if="${#fields.hasErrors('dataMorte')}"
-						th:text="#{label.mandatory}">Error</span>
-				</div>
-				<div>
-					<div class="buttons">
-						<span><button class="btn btn-lg btn-primary btn-block"
-								type="submit">Aggiungi</button></span>
-					</div>
-				</div>
+				<span><button class="btn btn-lg btn-primary btn-block" type="submit">Aggiungi</button></span>
 			</div>
+			
 		</form>
 	</div>
+
+	<!-- <div>
+		<ul>
+			<li th:each="file : ${files}">
+				<a th:href="${file}" th:text="${file}" />
+			</li>
+		</ul>
+	</div> -->
+</div>
 </body>
 </html>
