@@ -1,14 +1,12 @@
 package it.uniroma3.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Opera {
-	@Override
-	public String toString() {
-		return "Opera [id=" + id + ", titolo=" + titolo + ", descrizione=" + descrizione + ", dimensione=" + dimensione
-				+ ", tecnica=" + tecnica + ", anno=" + anno + ", artista=" + artista + "]";
-	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -72,18 +70,27 @@ public class Opera {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-	
+	@NotNull
+	@Size(min=1)
 	private String titolo;
+	@NotNull
+	@Size(min=1)
 	private String descrizione;
+	@NotNull
+	@Size(min=1)
 	private String dimensione;
+	@NotNull
+	@Size(min=1)
 	private String tecnica;
-	private String anno;
+	
+	@NotNull
+	private Integer anno;
 	@ManyToOne(cascade={CascadeType.MERGE})
 	private Artista artista;
 	
 	
 	public Opera(){}
-	public Opera(String titolo, String descrizione , String dimensione, String tecnica ,String anno){
+	public Opera(String titolo, String descrizione , String dimensione, String tecnica ,Integer anno){
 		this.anno=anno;
 		this.titolo=titolo;
 		this.descrizione=descrizione;
@@ -122,11 +129,11 @@ public class Opera {
 		this.tecnica = tecnica;
 	}
 
-	public String getAnno() {
+	public Integer getAnno() {
 		return anno;
 	}
 
-	public void setAnno(String anno) {
+	public void setAnno(Integer anno) {
 		this.anno = anno;
 	}
 

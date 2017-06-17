@@ -231,7 +231,12 @@ textarea {
 				<div>
 					<span th:text="#{label.firstName}"><b>Name: </b></span> <span><input
 						type="text" class="form-control" th:field="*{nome}" /></span> <span
-						th:if="${#fields.hasErrors('nome')}" th:text="#{label.mandatory}">Error</span>
+						th:if="${#fields.hasErrors('nome')}" th:text="#{label.mandatory}">Error</span>			
+				</div>
+				<div>
+					<span th:text="#{label.secondName}"><b>Cognome: </b></span> <span><input
+						type="text" class="form-control" th:field="*{cognome}" /></span> <span
+						th:if="${#fields.hasErrors('cognome')}" th:text="#{label.mandatory}">Error</span>			
 				</div>
 				<div>
 					<span th:text="#{label.dateBorn}"><b>dateBorn</b> </span> <span><input

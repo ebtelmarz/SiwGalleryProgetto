@@ -199,7 +199,7 @@
 	<h1>Gli artisti presenti nel sistema sono :</h1>
 
 	<ul style="list-style-type:none" th:each="artista : *{artisti}">
-		<li><a class="btn btn-lg btn-primary btn-block" th:href="@{/paginaArtista/} + ${artista.id}" ><span th:text="${artista.nome}">..</span> </a>
+		<li><a class="btn btn-lg btn-primary btn-block" th:href="@{/paginaArtista/} + ${artista.id}" ><span th:text="${artista.nome} + ${artista.cognome}">..</span> </a>
 			<form action="#" th:action="@{/rimuoviArtista}" method="post">
 				<input type="hidden" name="id" th:value="${artista.id}"/>
 				<input type="submit" class="btn btn-lg btn-primary btn-block" value ="cancella"/>

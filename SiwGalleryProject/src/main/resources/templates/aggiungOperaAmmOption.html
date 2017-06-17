@@ -227,10 +227,9 @@ textarea {
 		</div>
 	</nav>
 	<div class="container">
-		<form action="#" th:action="@{/aggiuntaOpere}" th:object="${opera}"
+		<form action="#" th:action="@{/aggiuntaOpereDaOption}" th:object="${opera}"
 			method="post">
 			<div class="form-group"></div>
-			<input type="hidden" name="id" th:value="${artista.id}" />
 			<div>
 				<div>
 					<span th:text="#{label.title}"><b>Titolo </b></span> <span><input
@@ -255,13 +254,23 @@ textarea {
 						type="text" class="form-control" th:field="*{anno}" /></span> <span
 						th:if="${#fields.hasErrors('anno')}" th:text="#{label.mandatory}">Error</span>
 				</div>
+
 				<div>
 					<span th:text="#{label.dimension}"><b>Dimensione </b></span> <span><input
 						type="text" class="form-control" th:field="*{dimensione}" /></span> <span
 						th:if="${#fields.hasErrors('dimensione')}"
-						th:text="#{label.mandatory}">Error</span> <span><button
-							class="btn btn-lg btn-primary btn-block" type="submit">Aggiungi</button></span>
+						th:text="#{label.mandatory}">Error</span>
+					<div>
+						<select  name="id" id="id">
+							<option th:each="artista : ${artisti}" th:value="${artista.id}"
+								 th:text="${artista.nome} + ${artista.cognome}">artista</option>
+						</select>
+						<span th:text="${errArtista}"></span>
+					</div>
+					<span><button class="btn btn-lg btn-primary btn-block"
+							type="submit">Aggiungi</button></span>
 				</div>
+
 			</div>
 		</form>
 	</div>
