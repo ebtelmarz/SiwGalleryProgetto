@@ -229,7 +229,7 @@ textarea {
 	<div class="container">
 		<form action="#" th:action="@{/aggiuntaOpere}" th:object="${opera}"
 			method="post">
-			<div class="form-group"></div>
+			<div class="form-group">
 			<input type="hidden" name="id" th:value="${artista.id}" />
 			<div>
 				<div>
@@ -266,6 +266,7 @@ textarea {
 						<span><button
 							class="btn btn-lg btn-primary btn-block" type="submit">Aggiungi</button></span>
 				</div>
+			</div>
 			</div>
 		</form>
 	</div>

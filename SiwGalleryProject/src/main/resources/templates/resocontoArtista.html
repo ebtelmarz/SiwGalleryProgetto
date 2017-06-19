@@ -189,10 +189,10 @@
 	
 
 	<h1>Nel sistema ci sono queste opere associate a questo artista:</h1>
-		<ul class = "sr-only" style="list-style-type:none" th:each="opera : *{opere}">
+		<ul  style="list-style-type:none" >
 
-			<li><a class="btn btn-lg btn-primary btn-block" th:href="@{/paginaOpera/} + ${opera.id} "> 
-					<span th:text="${opera.titolo}">text</span>
+			<li style="width: 100%;" th:each="opera : *{opere}"><a class="btn btn-lg btn-primary btn-block" th:href="@{/paginaOpera/} + ${opera.id} " th:text="${opera.titolo}"> 
+	
 			</a>
 			 <form action="#" th:action="@{/eliminaOpera}"  method="post">
 			 <input type="hidden" name="id" th:value="${opera.id}"/>

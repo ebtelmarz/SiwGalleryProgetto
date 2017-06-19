@@ -1,4 +1,5 @@
- body {
+@CHARSET "ISO-8859-1";
+body {
       font: 400 15px/1.8 Lato, sans-serif;
       color: #777;
   }

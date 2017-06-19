@@ -181,16 +181,13 @@
   </div>
 </nav>
 <div class="container">
-		<p th:text="'Titolo: ' + ${opera.titolo}" />
-	</div>
-	<div>
-		<p th:text="'Descrizione: ' + ${opera.descrizione}" />
-	</div>
-	<div>
-		<p th:text="'Tecnica: ' + ${opera.tecnica}" />
-	</div>
-	<div>
-		<p th:text="'Anno: ' + ${opera.anno}" />
+		<h3 th:text="'Titolo: ' + ${opera.titolo}" ></h3>
+
+		<h3 th:text="'Descrizione: ' + ${opera.descrizione}" ></h3>
+	
+		<h3 th:text="'Tecnica: ' + ${opera.tecnica}" ></h3>
+
+		<h3 th:text="'Anno: ' + ${opera.anno}" ></h3>
 	</div>
 </body>
 </html>
