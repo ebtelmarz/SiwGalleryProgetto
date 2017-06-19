@@ -37,18 +37,23 @@ public class OperaController {
 	public String aggiungiOpera(@Valid@ModelAttribute Opera opera,BindingResult bindingResult,@RequestParam String id, Model model){
 		Artista artista= aservice.findbyId(Long.parseLong(id));
 		model.addAttribute("artista",artista);
+		model.addAttribute("errAgg", "");
+
 		if(bindingResult.hasErrors()){
+
 			return "amministratoreOpera";
 		}
 		else{
+ 
 
-			opera.setArtista(artista);
-			artista.getOpere().add(opera);
-			oservice.add(opera);
-			aservice.add(artista);
-			model.addAttribute("opera",opera);
+				opera.setArtista(artista);
+				artista.getOpere().add(opera);
+				oservice.add(opera);
+				aservice.add(artista);
+				model.addAttribute("opera",opera);
+			}
 
-		}
+		
 		return "amministratoreOpera";
 
 	}
@@ -57,46 +62,47 @@ public class OperaController {
 		model.addAttribute("artisti", aservice.findAll());
 		Artista artista= aservice.findbyId(Long.parseLong(id));
 		model.addAttribute("artista",artista);
+		model.addAttribute("errAgg", "");
 		if(bindingResult.hasErrors()){
 			return "aggiungOperaAmmOption";
 		}
 		else{
-
-			opera.setArtista(artista);
-			artista.getOpere().add(opera);
-			oservice.add(opera);
-			aservice.add(artista);
-			model.addAttribute("opera",opera);
-
+				 
+				opera.setArtista(artista);
+				artista.getOpere().add(opera);
+				oservice.add(opera);
+				aservice.add(artista);
+				model.addAttribute("opera",opera);
+			
 		}
-	
-	return "aggiungOperaAmmOption";
 
-}
+		return "aggiungOperaAmmOption";
 
-@RequestMapping("/aggOpera")
-public String vistaAmmArtista(Model model, Opera opera){
-	model.addAttribute("artisti", aservice.findAll());
-	return "aggiungOperaAmmOption";
-}
-@RequestMapping("/nuovaOpera/{id}")
-public String paginaFormOpera(@PathVariable String id, Model model,Opera opera){
-	Artista artista = aservice.findbyId(Long.parseLong(id));
-	model.addAttribute("artista",artista);
-	return "amministratoreOpera";
-}
+	}
 
-@PostMapping("/eliminaOpera")
-public String eliminaOpera(@RequestParam String id, Model model, @RequestParam String artistaId){
-	model.addAttribute("artista", aservice.findbyId(Long.parseLong(artistaId)));
-	oservice.delete(oservice.findbyId(Long.parseLong(id)));
-	model.addAttribute("opere", oservice.findByArtistaId(Long.parseLong(artistaId)));
-	return "resocontoArtista";
-}
-@RequestMapping("/paginaOpera/{id}")
-public String paginaOpera(@PathVariable String id,Model model){
-	model.addAttribute("opera", oservice.findbyId(Long.parseLong(id)));
-	return "resocontoOpera";
-}
+	@RequestMapping("/aggOpera")
+	public String vistaAmmArtista(Model model, Opera opera){
+		model.addAttribute("artisti", aservice.findAll());
+		return "aggiungOperaAmmOption";
+	}
+	@RequestMapping("/nuovaOpera/{id}")
+	public String paginaFormOpera(@PathVariable String id, Model model,Opera opera){
+		Artista artista = aservice.findbyId(Long.parseLong(id));
+		model.addAttribute("artista",artista);
+		return "amministratoreOpera";
+	}
+
+	@PostMapping("/eliminaOpera")
+	public String eliminaOpera(@RequestParam String id, Model model, @RequestParam String artistaId){
+		model.addAttribute("artista", aservice.findbyId(Long.parseLong(artistaId)));
+		oservice.delete(oservice.findbyId(Long.parseLong(id)));
+		model.addAttribute("opere", oservice.findByArtistaId(Long.parseLong(artistaId)));
+		return "resocontoArtista";
+	}
+	@RequestMapping("/paginaOpera/{id}")
+	public String paginaOpera(@PathVariable String id,Model model){
+		model.addAttribute("opera", oservice.findbyId(Long.parseLong(id)));
+		return "resocontoOpera";
+	}
 
 }

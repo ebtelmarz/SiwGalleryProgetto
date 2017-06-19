@@ -218,10 +218,10 @@ textarea {
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="index.html">HOME</a></li>
+					<li><a href="/">HOME</a></li>
 					<li><a href="/artisti">ARTISTI</a></li>
 					<li><a href="/opere">OPERE</a></li>
-					<li><a href="/loginAmministratore">AREA RISERVATA</a></li>
+					<li><a href="/login">AREA RISERVATA</a></li>
 
 				</ul>
 			</div>
@@ -233,10 +233,9 @@ textarea {
 		<h5 align="center">-Pablo Picasso</h5>
 
 		<ul style="list-style-type: none" th:each="opera : *{opere}">
-			<li>
-				<button type="button" class="btn btn-primary btn-lg btn-block">
-					<span th:text='${opera.titolo}'>text</span>
-				</button>
+			<li><a th:href="@{/paginaOpera/} + ${opera.id}"
+				th:text='${opera.titolo}' class="btn btn-primary btn-lg btn-block">text</a>
+
 			</li>
 
 		</ul>

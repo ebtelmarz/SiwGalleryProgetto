@@ -44,11 +44,11 @@ public class MainController {
 		return "amministratore";
 	}
 
-  /* //index
+  /*
 	@RequestMapping("/index")
 	public String  paginaPrincipale(){
 		return "index";
-	}*/
-
+	}
+*/
 
 }

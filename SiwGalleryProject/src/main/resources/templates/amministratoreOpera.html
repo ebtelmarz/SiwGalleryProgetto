@@ -217,10 +217,10 @@ textarea {
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a th:href="index.html">HOME</a></li>
+					<li><a href="/">HOME</a></li>
 					<li><a href="/artisti">ARTISTI</a></li>
 					<li><a href="/opere">OPERE</a></li>
-					<li><a href="/login">AREA RISERVATA</a></li>
+				<li><a href="/login">AREA RISERVATA</a></li>
 
 				</ul>
 			</div>
@@ -253,17 +253,25 @@ textarea {
 				<div>
 					<span th:text="#{label.anno}"><b>Anno </b></span> <span><input
 						type="text" class="form-control" th:field="*{anno}" /></span> <span
-						th:if="${#fields.hasErrors('anno')}" th:text="#{label.mandatory}">Error</span>
+						th:if="${#fields.hasErrors('anno')}" th:text="#{label.number}">Error</span>
 				</div>
 				<div>
 					<span th:text="#{label.dimension}"><b>Dimensione </b></span> <span><input
 						type="text" class="form-control" th:field="*{dimensione}" /></span> <span
 						th:if="${#fields.hasErrors('dimensione')}"
-						th:text="#{label.mandatory}">Error</span> <span><button
+						th:text="#{label.mandatory}">Error</span> 
+						<div>
+						<span th:text="${errAgg}">errore</span>
+					</div>
+						<span><button
 							class="btn btn-lg btn-primary btn-block" type="submit">Aggiungi</button></span>
 				</div>
 			</div>
 		</form>
 	</div>
+	<nav style= "float:left; margin-left:10%;">
+	<span><a th:href="@{/amministratore/}"
+						class="btn btn-lg btn-primary btn-block" type="submit">Torna al menu</a></span>
+	</nav>
 </body>
 </html>

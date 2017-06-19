@@ -25,7 +25,7 @@ h3, h4 {
 	margin: 10px 0 30px 0;
 	letter-spacing: 10px;
 	font-size: 20px;
-	color: #111;
+	color: #ffffff;
 }
 
 .container {
@@ -195,11 +195,34 @@ footer a:hover {
 textarea {
 	resize: none;
 }
-/*  }
-  .button {
-    float: left;
-    border: 1px solid green;
-} */
+
+select {
+	margin-top: 20px;
+	background-color: #333;
+	border: 1px solid #ffffff;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-webkit-padding-end: 0px;
+	-moz-padding-end: 0px;
+	-webkit-padding-start: 2px;
+	-moz-padding-start: 0px;
+	height: 40px;
+	width: 100%;
+}
+
+option {
+	height: 40px;
+	color: #ffffff;
+	background-color: #333;
+}
+
+.option li a {
+	color: #000 !important;
+}
+
+.option li a:hover {
+	background-color: red !important;
+}
 </style>
 <title>Inserimento Opera</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -217,7 +240,7 @@ textarea {
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a th:href="index.html">HOME</a></li>
+					<li><a href="/">HOME</a></li>
 					<li><a href="/artisti">ARTISTI</a></li>
 					<li><a href="/opere">OPERE</a></li>
 					<li><a href="/login">AREA RISERVATA</a></li>
@@ -227,8 +250,8 @@ textarea {
 		</div>
 	</nav>
 	<div class="container">
-		<form action="#" th:action="@{/aggiuntaOpereDaOption}" th:object="${opera}"
-			method="post">
+		<form action="#" th:action="@{/aggiuntaOpereDaOption}"
+			th:object="${opera}" method="post">
 			<div class="form-group"></div>
 			<div>
 				<div>
@@ -252,7 +275,7 @@ textarea {
 				<div>
 					<span th:text="#{label.anno}"><b>Anno </b></span> <span><input
 						type="text" class="form-control" th:field="*{anno}" /></span> <span
-						th:if="${#fields.hasErrors('anno')}" th:text="#{label.mandatory}">Error</span>
+						th:if="${#fields.hasErrors('anno')}" th:text="#{label.number}">Error</span>
 				</div>
 
 				<div>
@@ -260,19 +283,25 @@ textarea {
 						type="text" class="form-control" th:field="*{dimensione}" /></span> <span
 						th:if="${#fields.hasErrors('dimensione')}"
 						th:text="#{label.mandatory}">Error</span>
-					<div>
-						<select  name="id" id="id">
+					<div class="styled-select slate">
+						<select name="id" id="id">
 							<option th:each="artista : ${artisti}" th:value="${artista.id}"
-								 th:text="${artista.nome} + ${artista.cognome}">artista</option>
-						</select>
-						<span th:text="${errArtista}"></span>
+								th:text="${artista.nome} + ' ' + ${artista.cognome}">Artista</option>
+						</select> <span th:text="${errArtista}"></span>
 					</div>
-					<span><button class="btn btn-lg btn-primary btn-block"
-							type="submit">Aggiungi</button></span>
+					
+						<span><button
+							class="btn btn-lg btn-primary btn-block" type="submit">Aggiungi</button></span>
+			
 				</div>
 
 			</div>
 		</form>
 	</div>
+	<nav style="float: left; margin-left: 10%;">
+		<span><a th:href="@{/amministratore/}"
+			class="btn btn-lg btn-primary btn-block" type="submit">Torna al
+				menu</a></span>
+	</nav>
 </body>
 </html>

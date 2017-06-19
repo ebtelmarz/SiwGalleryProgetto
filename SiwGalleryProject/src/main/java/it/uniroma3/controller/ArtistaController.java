@@ -52,13 +52,17 @@ public class ArtistaController {
 	@PostMapping("/addArtista")
 	public String checkArtistaInfo(@Valid @ModelAttribute Artista artista, 
 			BindingResult bindingResult, Model model) {
+		model.addAttribute("errAgg", "");
 
 		if (bindingResult.hasErrors()) {
 			return "amministratoreArtista";
 		}
 		else {
+	
+			
 			model.addAttribute(artista);
 			aservice.add(artista);
+			
 		}
 		return "amministratoreArtista";
 	}

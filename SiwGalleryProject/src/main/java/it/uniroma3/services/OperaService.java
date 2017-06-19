@@ -49,5 +49,21 @@ public class OperaService {
 		return opereArtista;
 	}
 	
+	/*public boolean exist(Artista artista, Opera opera){
+		boolean esiste=false;
+		List<Opera> opere=this.findByArtistaId(artista.getId());
+		int i=0;
+		while (esiste==false || i<opere.size() ){
+			Opera opera_con=opere.get(i);
+			if(opera.getTitolo().equals(opera_con.getTitolo()) && opera.getDescrizione().equals(opera_con.getDescrizione()) && opera.getAnno().equals(opera_con.getAnno()) && opera.getDimensione().equals(opera_con.getDimensione()))
+				esiste=true;
+			i++;
+
+		}
+		return esiste;
+
+	}*/
 
 }
+
+
