@@ -18,7 +18,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 public class SiwGalleryProjectApplication {
 	
-	@Override
+	
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application){
 		return application.sources(SiwGalleryProjectApplication.class);
 	}
